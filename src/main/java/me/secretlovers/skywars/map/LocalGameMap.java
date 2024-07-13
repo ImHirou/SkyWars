@@ -49,6 +49,7 @@ public class LocalGameMap implements GameMap{
         bukkitWorld = Bukkit.getWorld(activeWorldFolder.getName());
 
         if (bukkitWorld != null) bukkitWorld.setAutoSave(false);
+
         return isLoaded();
     }
 

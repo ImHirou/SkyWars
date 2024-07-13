@@ -58,7 +58,7 @@ public class SkyWarsItem {
     }
 
     public boolean needToFill(Random random) {
-        return random.nextDouble() < dropChance;
+        return random.nextDouble() < dropChance*2.5;
     }
 
     public ItemStack getItemStack(ThreadLocalRandom random) {

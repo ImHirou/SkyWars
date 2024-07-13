@@ -52,6 +52,11 @@ public class Team {
     }
 
     public void spawn() {
+        if(spawnLocation == null) {
+            System.out.println("SPAWN LOC IS NULL");
+            return;
+        }
+
         for(Player p : players) {
             PlayerUtil.clearPlayer(p);
            if (spawnLocation != null || spawnLocation.getWorld() != null) {

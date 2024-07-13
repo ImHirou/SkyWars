@@ -1,6 +1,5 @@
 package me.secretlovers.skywars.command;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import me.secretlovers.skywars.SkyWars;
 import me.secretlovers.skywars.utils.JsonUtil;
@@ -12,7 +11,6 @@ import org.bukkit.WorldCreator;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.craftbukkit.libs.org.apache.commons.io.FileUtils;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -22,7 +20,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
-import java.util.Map;
 
 public class AdminCommand implements CommandExecutor {
 
@@ -32,7 +29,9 @@ public class AdminCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
 
-        if (!(sender instanceof Player player)) return true;
+        if (!(sender instanceof Player)) return true;
+
+        Player player = (Player) sender;
 
         if (args.length < 1) return true;
 
@@ -80,10 +79,21 @@ public class AdminCommand implements CommandExecutor {
         }
 
         if(args[0].equals("save")) {
+            World world = player.getWorld();
+            for(Player p : world.getPlayers())
+                p.kickPlayer("Saving map " + world.getName());
+            world.save();
             File mapDirectory = new File(SkyWars.getInstance().getDataFolder().getAbsolutePath() + "/maps/" + player.getWorld().getName());
-            WorldUtil.copyWorld(player.getWorld().getWorldFolder(), mapDirectory);
+            try {
+                FileUtils.copyDirectory(world.getWorldFolder(), mapDirectory);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             File uiddat = new File(mapDirectory.getAbsolutePath() + "/uid.dat");
+            File sessionslock = new File(mapDirectory.getAbsolutePath() + "/session.lock");
             uiddat.delete();
+            sessionslock.delete();
+            world.getWorldFolder().delete();
         }
 
         if(args[0].equals("item")) {
@@ -110,6 +120,7 @@ public class AdminCommand implements CommandExecutor {
                 json.add(String.valueOf(items), item);
                 File file = new File(SkyWars.getInstance().getDataFolder().getAbsolutePath() + "/config.json");
                 JsonUtil.jsonToFile(SkyWars.getInstance().getJsonConfig(), file);
+                player.sendMessage("Item successfully added");
             }
         }
 

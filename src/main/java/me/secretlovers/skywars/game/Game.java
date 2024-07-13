@@ -26,7 +26,7 @@ import java.util.Map;
 @Getter
 public class Game {
 
-    private int id;
+    private final int id;
     private LocalGameMap gameMap;
     private ArrayList<Team> teams = new ArrayList<>();
     private ArrayList<Player> players = new ArrayList<>();
@@ -34,7 +34,7 @@ public class Game {
     private HashMap<Player, Team> playerTeam = new HashMap<>();
     private GameState gameState;
     private BossBar bossBar;
-    private int maxPlayers;
+    private final int maxPlayers;
 
     public Game(int id, String mapName) {
         this.id = id;
@@ -57,10 +57,18 @@ public class Game {
         gameState = state;
 
         switch (state) {
-            case WAITING -> WaitingPhase();
-            case STARTING -> StartingPhase();
-            case PLAYING -> PlayingPhase();
-            case FINISH -> FinishPhase();
+            case WAITING:
+                WaitingPhase();
+                break;
+            case STARTING:
+                StartingPhase();
+                break;
+            case PLAYING:
+                PlayingPhase();
+                break;
+            case FINISH:
+                FinishPhase();
+                break;
         }
     }
 
@@ -72,20 +80,18 @@ public class Game {
 
             @Override
             public void run() {
+
+                    if(gameState != GameState.WAITING) cancel();
+
                     timer--;
                     updateBossBar(timer, 30);
-                    if(players.size() <= 2) {
+                    if(players.size() < 2) {
                         changeGameState(GameState.UNKNOWN);
                         cancel();
                     }
                     if(timer <=0) {
                         changeGameState(GameState.STARTING);
                         cancel();
-                    }
-                    if((timer-1) % 5 == 0) {
-                        for(Player p : players) {
-                            p.sendMessage(timer-1 + " seconds left");
-                        }
                     }
             }
 
@@ -101,6 +107,8 @@ public class Game {
 
             @Override
             public void run() {
+
+                if(gameState != GameState.STARTING) cancel();
 
                 updateBossBar(1, 1);
 
@@ -118,7 +126,10 @@ public class Game {
 
                 if(gameMap.isLoaded()) {
                     System.out.println("game map is loaded");
-                    for(Team team : teams) team.spawn();
+                    for(Team team : teams) {
+                        team.getSpawnLocation().getChunk().load();
+                        team.spawn();
+                    }
                     changeGameState(GameState.PLAYING);
                     cancel();
                 }
@@ -143,6 +154,9 @@ public class Game {
 
             @Override
             public void run() {
+
+                if(gameState != GameState.PLAYING) cancel();
+
                 timer--;
                 updateBossBar(timer, 300);
                 int alive = 0;
@@ -184,6 +198,9 @@ public class Game {
 
             @Override
             public void run() {
+
+                if(gameState != GameState.FINISH) cancel();
+
                 timer--;
                 updateBossBar(timer, 10);
                 if(timer <= 0) {
@@ -191,7 +208,6 @@ public class Game {
                     gameMap.unload();
                     bossBar.removeAll();
                     bossBar.setVisible(false);
-                    bossBar = null;
                     SkyWars.getInstance().getGameManager().removeGame(id);
                     if(!gameMap.isLoaded()) {
                         cancel();

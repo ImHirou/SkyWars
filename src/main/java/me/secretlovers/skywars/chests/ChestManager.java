@@ -54,21 +54,15 @@ public class ChestManager implements Listener {
 
         ThreadLocalRandom random = ThreadLocalRandom.current();
         Set<SkyWarsItem> used = new HashSet<>();
-
-        for(int slotIndex = 0; slotIndex < inventory.getSize(); slotIndex++) {
-            SkyWarsItem randomItem = null;
-            for(int i = 0; i <= itemsToDrop.size(); i++) {
-                randomItem = itemsToDrop.get(random.nextInt(itemsToDrop.size()));
-                if(used.contains(randomItem)) continue;
-                if(randomItem.needToFill(random)) {
+        do {
+            for (int slotIndex = 0; slotIndex < inventory.getSize(); slotIndex++) {
+                SkyWarsItem randomItem = itemsToDrop.get(random.nextInt(itemsToDrop.size()));
+                if (randomItem.needToFill(random)) {
                     used.add(randomItem);
                     inventory.setItem(slotIndex, randomItem.getItemStack(random));
-                    break;
                 }
             }
-
-
-        }
+        } while (inventory.isEmpty());
     }
 
     public void markAsOpen(Location location) {

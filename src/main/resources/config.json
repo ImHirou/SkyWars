@@ -2,7 +2,7 @@
   "items": {
     "1": {
       "material": "IRON_SWORD",
-      "name": "&1mega super duper puper sword",
+      "name": "\u00261mega super duper puper sword",
       "enchants": {
         "fire_aspect": 2,
         "sharpness": 3
@@ -13,21 +13,21 @@
     },
     "2": {
       "material": "COOKED_BEEF",
-      "name": "&2TASTY MEAL",
+      "name": "\u00262TASTY MEAL",
       "chance": 0.2,
       "minAmount": 3,
       "maxAmount": 8
     },
     "3": {
       "material": "LEATHER_CHESTPLATE",
-      "name": "&3Chestplate",
+      "name": "\u00263Chestplate",
       "chance": 0.1,
       "minAmount": 1,
       "maxAmount": 1
     },
     "4": {
       "material": "LEATHER_CHESTPLATE",
-      "name": "&4 just Chestplate",
+      "name": "\u00264 just Chestplate",
       "enchants": {
         "protection": 2
       },
@@ -37,31 +37,160 @@
     },
     "5": {
       "material": "CHAINMAIL_LEGGINGS",
-      "name": "&5 Leggings",
+      "name": "\u00265 Leggings",
       "chance": 0.1,
       "minAmount": 1,
       "maxAmount": 1
     },
     "6": {
       "material": "GOLDEN_APPLE",
-      "name": "&6 gepl",
+      "name": "\u00266 gepl",
       "chance": 0.08,
       "minAmount": 1,
       "maxAmount": 3
     },
     "7": {
-      "material": "IRON_BOOTS",
-      "name": "&7 boots",
-      "chance": 0.08,
+      "material": "BOW",
+      "name": "�d�lmega bow",
+      "enchants": {
+        "infinity": 1,
+        "power": 2
+      },
+      "chance": 0.037,
       "minAmount": 1,
       "maxAmount": 1
     },
     "8": {
-      "material": "OAK_WOOD",
-      "name": "&8 DEREVO VLADIKA",
-      "chance": 0.27,
-      "minAmount": 5,
-      "maxAmount": 18
+      "material": "OAK_PLANKS",
+      "name": "",
+      "chance": 0.023,
+      "minAmount": 1,
+      "maxAmount": 26
+    },
+    "9": {
+      "material": "STONE",
+      "name": "",
+      "chance": 0.028,
+      "minAmount": 1,
+      "maxAmount": 47
+    },
+    "10": {
+      "material": "OAK_LOG",
+      "name": "",
+      "chance": 0.025,
+      "minAmount": 1,
+      "maxAmount": 13
+    },
+    "11": {
+      "material": "ENDER_PEARL",
+      "name": "",
+      "chance": 0.028,
+      "minAmount": 1,
+      "maxAmount": 5
+    },
+    "12": {
+      "material": "ARROW",
+      "name": "",
+      "chance": 0.032,
+      "minAmount": 1,
+      "maxAmount": 6
+    },
+    "13": {
+      "material": "WATER_BUCKET",
+      "name": "",
+      "chance": 0.035,
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    "14": {
+      "material": "TOTEM_OF_UNDYING",
+      "name": "",
+      "chance": 0.001,
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    "15": {
+      "material": "SHIELD",
+      "name": "",
+      "chance": 0.017,
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    "16": {
+      "material": "LEATHER_HELMET",
+      "name": "�bHelmet",
+      "enchants": {
+        "projectile_protection": 2,
+        "protection": 3,
+        "thorns": 1
+      },
+      "chance": 0.038,
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    "17": {
+      "material": "LEATHER_CHESTPLATE",
+      "name": "�bTunic",
+      "enchants": {
+        "projectile_protection": 2,
+        "protection": 3,
+        "thorns": 1
+      },
+      "chance": 0.034,
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    "18": {
+      "material": "LEATHER_LEGGINGS",
+      "name": "�bPanties",
+      "enchants": {
+        "projectile_protection": 2,
+        "protection": 3,
+        "thorns": 1
+      },
+      "chance": 0.035,
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    "19": {
+      "material": "LEATHER_BOOTS",
+      "name": "�bBoots",
+      "enchants": {
+        "projectile_protection": 2,
+        "protection": 3,
+        "thorns": 1
+      },
+      "chance": 0.037,
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    "20": {
+      "material": "FISHING_ROD",
+      "name": "",
+      "chance": 0.026,
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    "21": {
+      "material": "FLINT_AND_STEEL",
+      "name": "",
+      "chance": 0.024,
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    "22": {
+      "material": "ELYTRA",
+      "name": "",
+      "chance": 0.003,
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    "23": {
+      "material": "FIREWORK_ROCKET",
+      "name": "",
+      "chance": 0.007,
+      "minAmount": 1,
+      "maxAmount": 2
     }
   },
   "maps": {
@@ -103,6 +232,208 @@
       }
     },
     "winterhelm": {
+      "maxPlayers": 1,
+      "teams": {
+        "1": {
+          "color": "RED",
+          "spawnLocation": {
+            "x": -2,
+            "y": 56,
+            "z": 65
+          }
+        },
+        "2": {
+          "color": "BLUE",
+          "spawnLocation": {
+            "x": -24,
+            "y": 56,
+            "z": 43
+          }
+        },
+        "3": {
+          "color": "GREEN",
+          "spawnLocation": {
+            "x": 24,
+            "y": 56,
+            "z": 49
+          }
+        },
+        "4": {
+          "color": "YELLOW",
+          "spawnLocation": {
+            "x": 43,
+            "y": 56,
+            "z": 24
+          }
+        },
+        "5": {
+          "color": "WHITE",
+          "spawnLocation": {
+            "x": 65,
+            "y": 56,
+            "z": 2
+          }
+        },
+        "6": {
+          "color": "BLACK",
+          "spawnLocation": {
+            "x": 49,
+            "y": 56,
+            "z": -24
+          }
+        },
+        "7": {
+          "color": "PINK",
+          "spawnLocation": {
+            "x": 24,
+            "y": 56,
+            "z": -43
+          }
+        },
+        "8": {
+          "color": "PURPLE",
+          "spawnLocation": {
+            "x": 2,
+            "y": 56,
+            "z": -65
+          }
+        },
+        "9": {
+          "color": "LIME",
+          "spawnLocation": {
+            "x": -24,
+            "y": 56,
+            "z": -49
+          }
+        },
+        "10": {
+          "color": "ORANGE",
+          "spawnLocation": {
+            "x": -43,
+            "y": 56,
+            "z": -24
+          }
+        },
+        "11": {
+          "color": "CYAN",
+          "spawnLocation": {
+            "x": -65,
+            "y": 56,
+            "z": -2
+          }
+        },
+        "12": {
+          "color": "GRAY",
+          "spawnLocation": {
+            "x": -49,
+            "y": 56,
+            "z": 24
+          }
+        }
+      }
+    },
+    "wreath": {
+      "maxPlayers": 1,
+      "teams": {
+        "1": {
+          "color": "RED",
+          "spawnLocation": {
+            "x": -2,
+            "y": 56,
+            "z": 65
+          }
+        },
+        "2": {
+          "color": "BLUE",
+          "spawnLocation": {
+            "x": -24,
+            "y": 56,
+            "z": 43
+          }
+        },
+        "3": {
+          "color": "GREEN",
+          "spawnLocation": {
+            "x": 24,
+            "y": 56,
+            "z": 49
+          }
+        },
+        "4": {
+          "color": "YELLOW",
+          "spawnLocation": {
+            "x": 43,
+            "y": 56,
+            "z": 24
+          }
+        },
+        "5": {
+          "color": "WHITE",
+          "spawnLocation": {
+            "x": 65,
+            "y": 56,
+            "z": 2
+          }
+        },
+        "6": {
+          "color": "BLACK",
+          "spawnLocation": {
+            "x": 49,
+            "y": 56,
+            "z": -24
+          }
+        },
+        "7": {
+          "color": "PINK",
+          "spawnLocation": {
+            "x": 24,
+            "y": 56,
+            "z": -43
+          }
+        },
+        "8": {
+          "color": "PURPLE",
+          "spawnLocation": {
+            "x": 2,
+            "y": 56,
+            "z": -65
+          }
+        },
+        "9": {
+          "color": "LIME",
+          "spawnLocation": {
+            "x": -24,
+            "y": 56,
+            "z": -49
+          }
+        },
+        "10": {
+          "color": "ORANGE",
+          "spawnLocation": {
+            "x": -43,
+            "y": 56,
+            "z": -24
+          }
+        },
+        "11": {
+          "color": "CYAN",
+          "spawnLocation": {
+            "x": -65,
+            "y": 56,
+            "z": -2
+          }
+        },
+        "12": {
+          "color": "GRAY",
+          "spawnLocation": {
+            "x": -49,
+            "y": 56,
+            "z": 24
+          }
+        }
+      }
+    },
+    "toadstool": {
       "maxPlayers": 1,
       "teams": {
         "1": {

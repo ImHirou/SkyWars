@@ -34,8 +34,9 @@ public class GamesGUI {
                 Player p = (Player) event.getWhoClicked();
                 if(game.getMaxPlayers() != game.getPlayers().size()) {
                     game.addPlayer(p);
+                } else {
+                    open(p);
                 }
-                open(p);
             });
 
             menu.addButton(button);
