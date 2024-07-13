@@ -1,0 +1,62 @@
+plugins {
+    id 'java'
+}
+
+group = 'me.secretlovers'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+
+        // As of Gradle 5.1, you can limit this to only those
+        // dependencies you expect from it
+        content {
+            includeGroup 'org.bukkit'
+            includeGroup 'org.spigotmc'
+        }
+    }
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/central' }
+    maven {
+        name = "sonatype"
+        url = "https://oss.sonatype.org/content/groups/public/"
+    }
+    maven { url 'https://maven.elmakers.com/repository/' }
+    maven { url 'https://jitpack.io' }
+    mavenLocal()
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot:1.16.5-R0.1-SNAPSHOT'
+    //compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    implementation 'org.slf4j:slf4j-simple:1.7.32'
+    implementation 'com.samjakob:SpiGUI:1.3.1'
+
+    implementation 'io.vertx:vertx-mongo-client:4.5.1'
+    implementation 'org.mongodb:mongodb-driver-reactivestreams:4.11.1'
+}
+
+jar {
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+}
+compileJava {
+    options.encoding = "UTF-8"
+}
+
+jar {
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+    sourceCompatibility = "16"
+    targetCompatibility = "16"
+}
+sourceCompatibility = JavaVersion.VERSION_16
+targetCompatibility = JavaVersion.VERSION_16
