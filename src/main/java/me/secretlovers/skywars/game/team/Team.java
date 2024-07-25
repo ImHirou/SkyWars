@@ -5,11 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import me.secretlovers.skywars.utils.LocationUtil;
 import me.secretlovers.skywars.utils.PlayerUtil;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
-import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -26,8 +22,8 @@ public class Team {
     private Location spawnLocation;
     private int maxPlayers;
 
-    public Team(JsonObject json, World world, int maxPlayers) {
-        spawnLocation = LocationUtil.fromJson(json.getAsJsonObject("spawnLocation"), world);
+    public Team(JsonObject json, int maxPlayers) {
+        spawnLocation = LocationUtil.fromJson(json.getAsJsonObject("spawnLocation"), Bukkit.getWorlds().get(0));
         this.maxPlayers = maxPlayers;
         color = json.get("color").getAsString();
         try {
@@ -51,7 +47,7 @@ public class Team {
         alivePlayers.remove(p);
     }
 
-    public void spawn() {
+    public void spawn(World world) {
         if(spawnLocation == null) {
             System.out.println("SPAWN LOC IS NULL");
             return;
@@ -59,13 +55,7 @@ public class Team {
 
         for(Player p : players) {
             PlayerUtil.clearPlayer(p);
-           if (spawnLocation != null || spawnLocation.getWorld() != null) {
-                p.teleport(spawnLocation);
-            } else if(spawnLocation == null){
-                System.out.println("not loaded spawnloc");
-            } else {
-                System.out.println("World not loaded");
-            }
+                p.teleport(new Location(world, spawnLocation.getX(), spawnLocation.getY(), spawnLocation.getZ()));
         }
     }
 

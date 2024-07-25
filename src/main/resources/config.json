@@ -1,196 +1,259 @@
 {
   "items": {
-    "1": {
-      "material": "IRON_SWORD",
-      "name": "\u00261mega super duper puper sword",
-      "enchants": {
-        "fire_aspect": 2,
-        "sharpness": 3
+    "first": {
+      "1": {
+        "nbt": "{Potion:\"minecraft:strong_healing\"}",
+        "material": "SPLASH_POTION",
+        "chance": 0.062,
+        "minAmount": 1,
+        "maxAmount": 1
       },
-      "chance": 0.1,
-      "minAmount": 1,
-      "maxAmount": 1
-    },
-    "2": {
-      "material": "COOKED_BEEF",
-      "name": "\u00262TASTY MEAL",
-      "chance": 0.2,
-      "minAmount": 3,
-      "maxAmount": 8
-    },
-    "3": {
-      "material": "LEATHER_CHESTPLATE",
-      "name": "\u00263Chestplate",
-      "chance": 0.1,
-      "minAmount": 1,
-      "maxAmount": 1
-    },
-    "4": {
-      "material": "LEATHER_CHESTPLATE",
-      "name": "\u00264 just Chestplate",
-      "enchants": {
-        "protection": 2
+      "2": {
+        "nbt": "{Potion:\"minecraft:harming\"}",
+        "material": "TIPPED_ARROW",
+        "chance": 0.042,
+        "minAmount": 1,
+        "maxAmount": 3
       },
-      "chance": 0.08,
-      "minAmount": 1,
-      "maxAmount": 1
-    },
-    "5": {
-      "material": "CHAINMAIL_LEGGINGS",
-      "name": "\u00265 Leggings",
-      "chance": 0.1,
-      "minAmount": 1,
-      "maxAmount": 1
-    },
-    "6": {
-      "material": "GOLDEN_APPLE",
-      "name": "\u00266 gepl",
-      "chance": 0.08,
-      "minAmount": 1,
-      "maxAmount": 3
-    },
-    "7": {
-      "material": "BOW",
-      "name": "�d�lmega bow",
-      "enchants": {
-        "infinity": 1,
-        "power": 2
+      "3": {
+        "nbt": "{Damage:0}",
+        "material": "CARROT_ON_A_STICK",
+        "chance": 0.05,
+        "minAmount": 1,
+        "maxAmount": 1
       },
-      "chance": 0.037,
-      "minAmount": 1,
-      "maxAmount": 1
-    },
-    "8": {
-      "material": "OAK_PLANKS",
-      "name": "",
-      "chance": 0.023,
-      "minAmount": 1,
-      "maxAmount": 26
-    },
-    "9": {
-      "material": "STONE",
-      "name": "",
-      "chance": 0.028,
-      "minAmount": 1,
-      "maxAmount": 47
-    },
-    "10": {
-      "material": "OAK_LOG",
-      "name": "",
-      "chance": 0.025,
-      "minAmount": 1,
-      "maxAmount": 13
-    },
-    "11": {
-      "material": "ENDER_PEARL",
-      "name": "",
-      "chance": 0.028,
-      "minAmount": 1,
-      "maxAmount": 5
-    },
-    "12": {
-      "material": "ARROW",
-      "name": "",
-      "chance": 0.032,
-      "minAmount": 1,
-      "maxAmount": 6
-    },
-    "13": {
-      "material": "WATER_BUCKET",
-      "name": "",
-      "chance": 0.035,
-      "minAmount": 1,
-      "maxAmount": 1
-    },
-    "14": {
-      "material": "TOTEM_OF_UNDYING",
-      "name": "",
-      "chance": 0.001,
-      "minAmount": 1,
-      "maxAmount": 1
-    },
-    "15": {
-      "material": "SHIELD",
-      "name": "",
-      "chance": 0.017,
-      "minAmount": 1,
-      "maxAmount": 1
-    },
-    "16": {
-      "material": "LEATHER_HELMET",
-      "name": "�bHelmet",
-      "enchants": {
-        "projectile_protection": 2,
-        "protection": 3,
-        "thorns": 1
+      "4": {
+        "material": "PIG_SPAWN_EGG",
+        "chance": 0.05,
+        "minAmount": 1,
+        "maxAmount": 1
       },
-      "chance": 0.038,
-      "minAmount": 1,
-      "maxAmount": 1
-    },
-    "17": {
-      "material": "LEATHER_CHESTPLATE",
-      "name": "�bTunic",
-      "enchants": {
-        "projectile_protection": 2,
-        "protection": 3,
-        "thorns": 1
+      "5": {
+        "material": "SADDLE",
+        "chance": 0.05,
+        "minAmount": 1,
+        "maxAmount": 1
       },
-      "chance": 0.034,
-      "minAmount": 1,
-      "maxAmount": 1
-    },
-    "18": {
-      "material": "LEATHER_LEGGINGS",
-      "name": "�bPanties",
-      "enchants": {
-        "projectile_protection": 2,
-        "protection": 3,
-        "thorns": 1
+      "6": {
+        "nbt": "{Damage:0}",
+        "material": "WOODEN_SWORD",
+        "chance": 0.04,
+        "minAmount": 1,
+        "maxAmount": 1
       },
-      "chance": 0.035,
-      "minAmount": 1,
-      "maxAmount": 1
-    },
-    "19": {
-      "material": "LEATHER_BOOTS",
-      "name": "�bBoots",
-      "enchants": {
-        "projectile_protection": 2,
-        "protection": 3,
-        "thorns": 1
+      "7": {
+        "nbt": "{Damage:0}",
+        "material": "STONE_SWORD",
+        "chance": 0.03,
+        "minAmount": 1,
+        "maxAmount": 1
       },
-      "chance": 0.037,
-      "minAmount": 1,
-      "maxAmount": 1
+      "8": {
+        "nbt": "{Damage:0}",
+        "material": "LEATHER_BOOTS",
+        "chance": 0.04,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "9": {
+        "nbt": "{Damage:0}",
+        "material": "LEATHER_LEGGINGS",
+        "chance": 0.03,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "10": {
+        "nbt": "{Damage:0}",
+        "material": "LEATHER_CHESTPLATE",
+        "chance": 0.03,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "11": {
+        "nbt": "{Damage:0}",
+        "material": "LEATHER_HELMET",
+        "chance": 0.04,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "12": {
+        "nbt": "{Damage:0}",
+        "material": "BOW",
+        "chance": 0.04,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "13": {
+        "material": "ARROW",
+        "chance": 0.04,
+        "minAmount": 1,
+        "maxAmount": 4
+      },
+      "14": {
+        "nbt": "{Damage:0}",
+        "material": "CHAINMAIL_BOOTS",
+        "chance": 0.01,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "15": {
+        "nbt": "{Damage:0}",
+        "material": "CHAINMAIL_HELMET",
+        "chance": 0.01,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "16": {
+        "nbt": "{Damage:0}",
+        "material": "CHAINMAIL_LEGGINGS",
+        "chance": 0.01,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "17": {
+        "nbt": "{Damage:0}",
+        "material": "CHAINMAIL_CHESTPLATE",
+        "chance": 0.01,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "18": {
+        "nbt": "{Damage:0}",
+        "material": "IRON_SWORD",
+        "chance": 0.01,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "19": {
+        "nbt": "{Damage:0}",
+        "material": "SHIELD",
+        "chance": 0.05,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "20": {
+        "material": "COBBLESTONE",
+        "chance": 0.04,
+        "minAmount": 1,
+        "maxAmount": 24
+      },
+      "21": {
+        "material": "STONE",
+        "chance": 0.04,
+        "minAmount": 1,
+        "maxAmount": 35
+      },
+      "22": {
+        "material": "OAK_LOG",
+        "chance": 0.04,
+        "minAmount": 1,
+        "maxAmount": 12
+      },
+      "23": {
+        "material": "OAK_PLANKS",
+        "chance": 0.04,
+        "minAmount": 1,
+        "maxAmount": 42
+      }
     },
-    "20": {
-      "material": "FISHING_ROD",
-      "name": "",
-      "chance": 0.026,
-      "minAmount": 1,
-      "maxAmount": 1
-    },
-    "21": {
-      "material": "FLINT_AND_STEEL",
-      "name": "",
-      "chance": 0.024,
-      "minAmount": 1,
-      "maxAmount": 1
-    },
-    "22": {
-      "material": "ELYTRA",
-      "name": "",
-      "chance": 0.003,
-      "minAmount": 1,
-      "maxAmount": 1
-    },
-    "23": {
-      "material": "FIREWORK_ROCKET",
-      "name": "",
-      "chance": 0.007,
-      "minAmount": 1,
-      "maxAmount": 2
+    "second": {
+      "1": {
+        "nbt": "{Damage:0}",
+        "material": "NETHERITE_BOOTS",
+        "chance": 0.01,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "2": {
+        "nbt": "{Damage:0}",
+        "material": "NETHERITE_LEGGINGS",
+        "chance": 0.01,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "3": {
+        "nbt": "{Damage:0}",
+        "material": "NETHERITE_CHESTPLATE",
+        "chance": 0.01,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "4": {
+        "nbt": "{Damage:0}",
+        "material": "NETHERITE_HELMET",
+        "chance": 0.01,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "5": {
+        "nbt": "{Damage:0}",
+        "material": "NETHERITE_SWORD",
+        "chance": 0.01,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "6": {
+        "nbt": "{Damage:0}",
+        "material": "DIAMOND_SWORD",
+        "chance": 0.05,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "7": {
+        "nbt": "{Damage:0}",
+        "material": "DIAMOND_BOOTS",
+        "chance": 0.05,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "8": {
+        "nbt": "{Damage:0}",
+        "material": "DIAMOND_LEGGINGS",
+        "chance": 0.05,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "9": {
+        "nbt": "{Damage:0}",
+        "material": "DIAMOND_CHESTPLATE",
+        "chance": 0.05,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "10": {
+        "nbt": "{Damage:0}",
+        "material": "DIAMOND_HELMET",
+        "chance": 0.05,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "11": {
+        "nbt": "{Potion:\"minecraft:strong_harming\"}",
+        "material": "TIPPED_ARROW",
+        "chance": 0.05,
+        "minAmount": 1,
+        "maxAmount": 5
+      },
+      "12": {
+        "material": "TOTEM_OF_UNDYING",
+        "chance": 0.05,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "13": {
+        "nbt": "{Damage:0}",
+        "material": "WOODEN_AXE",
+        "chance": 0.05,
+        "minAmount": 1,
+        "maxAmount": 1
+      },
+      "14": {
+        "nbt": "{Potion:\"minecraft:strong_strength\"}",
+        "material": "POTION",
+        "chance": 0.05,
+        "minAmount": 1,
+        "maxAmount": 1
+      }
     }
   },
   "maps": {
@@ -338,97 +401,97 @@
         "1": {
           "color": "RED",
           "spawnLocation": {
-            "x": -2,
-            "y": 56,
-            "z": 65
+            "x": -67,
+            "y": 72,
+            "z": 1
           }
         },
         "2": {
           "color": "BLUE",
           "spawnLocation": {
-            "x": -24,
-            "y": 56,
-            "z": 43
+            "x": -43,
+            "y": 72,
+            "z": 23
           }
         },
         "3": {
           "color": "GREEN",
           "spawnLocation": {
-            "x": 24,
-            "y": 56,
-            "z": 49
+            "x": -23,
+            "y": 72,
+            "z": 45
           }
         },
         "4": {
           "color": "YELLOW",
           "spawnLocation": {
-            "x": 43,
-            "y": 56,
-            "z": 24
+            "x": 1,
+            "y": 72,
+            "z": 67
           }
         },
         "5": {
           "color": "WHITE",
           "spawnLocation": {
-            "x": 65,
-            "y": 56,
-            "z": 2
+            "x": 23,
+            "y": 72,
+            "z": 43
           }
         },
         "6": {
           "color": "BLACK",
           "spawnLocation": {
-            "x": 49,
-            "y": 56,
-            "z": -24
+            "x": 45,
+            "y": 72,
+            "z": 23
           }
         },
         "7": {
           "color": "PINK",
           "spawnLocation": {
-            "x": 24,
-            "y": 56,
-            "z": -43
+            "x": 67,
+            "y": 72,
+            "z": -1
           }
         },
         "8": {
           "color": "PURPLE",
           "spawnLocation": {
-            "x": 2,
-            "y": 56,
-            "z": -65
+            "x": 43,
+            "y": 72,
+            "z": -23
           }
         },
         "9": {
           "color": "LIME",
           "spawnLocation": {
-            "x": -24,
-            "y": 56,
-            "z": -49
+            "x": 23,
+            "y": 72,
+            "z": -45
           }
         },
         "10": {
           "color": "ORANGE",
           "spawnLocation": {
-            "x": -43,
-            "y": 56,
-            "z": -24
+            "x": -1,
+            "y": 72,
+            "z": -67
           }
         },
         "11": {
           "color": "CYAN",
           "spawnLocation": {
-            "x": -65,
-            "y": 56,
-            "z": -2
+            "x": -23,
+            "y": 72,
+            "z": -43
           }
         },
         "12": {
           "color": "GRAY",
           "spawnLocation": {
-            "x": -49,
-            "y": 56,
-            "z": 24
+            "x": -45,
+            "y": 72,
+            "z": -23
           }
         }
       }
@@ -439,98 +502,267 @@
         "1": {
           "color": "RED",
           "spawnLocation": {
-            "x": -2,
-            "y": 56,
-            "z": 65
+            "x": 36,
+            "y": 96,
+            "z": 28
           }
         },
         "2": {
           "color": "BLUE",
           "spawnLocation": {
-            "x": -24,
-            "y": 56,
-            "z": 43
+            "x": 43,
+            "y": 96,
+            "z": 9
           }
         },
         "3": {
           "color": "GREEN",
           "spawnLocation": {
-            "x": 24,
-            "y": 56,
-            "z": 49
+            "x": 43,
+            "y": 96,
+            "z": -7
           }
         },
         "4": {
           "color": "YELLOW",
           "spawnLocation": {
-            "x": 43,
-            "y": 56,
-            "z": 24
+            "x": 36,
+            "y": 96,
+            "z": -26
           }
         },
         "5": {
           "color": "WHITE",
           "spawnLocation": {
-            "x": 65,
-            "y": 56,
-            "z": 2
+            "x": 20,
+            "y": 96,
+            "z": -34
           }
         },
         "6": {
           "color": "BLACK",
           "spawnLocation": {
-            "x": 49,
-            "y": 56,
-            "z": -24
+            "x": -16,
+            "y": 96,
+            "z": -34
           }
         },
         "7": {
           "color": "PINK",
           "spawnLocation": {
-            "x": 24,
-            "y": 56,
-            "z": -43
+            "x": -32,
+            "y": 96,
+            "z": -26
           }
         },
         "8": {
           "color": "PURPLE",
           "spawnLocation": {
-            "x": 2,
-            "y": 56,
-            "z": -65
+            "x": -39,
+            "y": 96,
+            "z": -7
           }
         },
         "9": {
           "color": "LIME",
           "spawnLocation": {
-            "x": -24,
-            "y": 56,
-            "z": -49
+            "x": -39,
+            "y": 96,
+            "z": 9
           }
         },
         "10": {
           "color": "ORANGE",
           "spawnLocation": {
-            "x": -43,
-            "y": 56,
-            "z": -24
+            "x": -32,
+            "y": 96,
+            "z": 28
           }
         },
         "11": {
           "color": "CYAN",
           "spawnLocation": {
-            "x": -65,
-            "y": 56,
-            "z": -2
+            "x": -16,
+            "y": 96,
+            "z": 36
           }
         },
         "12": {
           "color": "GRAY",
           "spawnLocation": {
-            "x": -49,
-            "y": 56,
-            "z": 24
+            "x": 20,
+            "y": 96,
+            "z": 36
           }
+        }
+      }
+    }
+  },
+  "kits": {
+    "starter": {
+      "name": "starter",
+      "cost": 0,
+      "items": {
+        "0": {
+          "nbt": "{Damage:0}",
+          "material": "WOODEN_PICKAXE",
+          "amount": 1,
+          "slot": 0
+        },
+        "1": {
+          "material": "OAK_LOG",
+          "amount": 4,
+          "slot": 1
+        },
+        "2": {
+          "material": "APPLE",
+          "amount": 2,
+          "slot": 2
+        },
+        "38": {
+          "nbt": "{Damage:0}",
+          "material": "LEATHER_CHESTPLATE",
+          "amount": 1,
+          "slot": 38
+        }
+      }
+    },
+    "ulianochka": {
+      "name": "ulianochka",
+      "cost": 1000,
+      "items": {
+        "0": {
+          "nbt": "{Damage:0}",
+          "material": "CARROT_ON_A_STICK",
+          "amount": 1,
+          "slot": 0
+        },
+        "1": {
+          "material": "PIG_SPAWN_EGG",
+          "amount": 1,
+          "slot": 1
+        },
+        "2": {
+          "material": "SADDLE",
+          "amount": 1,
+          "slot": 2
+        },
+        "3": {
+          "material": "COARSE_DIRT",
+          "amount": 8,
+          "slot": 3
+        },
+        "4": {
+          "material": "PORKCHOP",
+          "amount": 2,
+          "slot": 4
+        },
+        "5": {
+          "material": "CARROT",
+          "amount": 2,
+          "slot": 5
+        },
+        "37": {
+          "nbt": "{Damage:0}",
+          "material": "LEATHER_LEGGINGS",
+          "amount": 1,
+          "slot": 37
+        },
+        "38": {
+          "nbt": "{Damage:0}",
+          "material": "LEATHER_CHESTPLATE",
+          "amount": 1,
+          "slot": 38
+        }
+      }
+    },
+    "lumberjack": {
+      "name": "lumberjack",
+      "cost": 5000,
+      "items": {
+        "0": {
+          "nbt": "{Damage:0}",
+          "material": "IRON_AXE",
+          "amount": 1,
+          "slot": 0
+        },
+        "1": {
+          "material": "OAK_LOG",
+          "amount": 16,
+          "slot": 1
+        },
+        "2": {
+          "material": "COOKED_BEEF",
+          "amount": 2,
+          "slot": 2
+        },
+        "37": {
+          "nbt": "{Damage:0}",
+          "material": "LEATHER_LEGGINGS",
+          "amount": 1,
+          "slot": 37
+        },
+        "38": {
+          "nbt": "{Damage:0}",
+          "material": "CHAINMAIL_CHESTPLATE",
+          "amount": 1,
+          "slot": 38
+        }
+      }
+    },
+    "miner": {
+      "name": "miner",
+      "cost": 5000,
+      "items": {
+        "0": {
+          "nbt": "{Damage:0}",
+          "material": "IRON_PICKAXE",
+          "amount": 1,
+          "slot": 0
+        },
+        "1": {
+          "material": "STONE",
+          "amount": 16,
+          "slot": 1
+        },
+        "2": {
+          "material": "COOKED_BEEF",
+          "amount": 2,
+          "slot": 2
+        },
+        "36": {
+          "nbt": "{Damage:0}",
+          "material": "CHAINMAIL_BOOTS",
+          "amount": 1,
+          "slot": 36
+        },
+        "37": {
+          "nbt": "{Damage:0}",
+          "material": "GOLDEN_LEGGINGS",
+          "amount": 1,
+          "slot": 37
+        },
+        "39": {
+          "nbt": "{Damage:0}",
+          "material": "IRON_HELMET",
+          "amount": 1,
+          "slot": 39
+        }
+      }
+    }
+  },
+  "lobby": {
+    "spawn": {
+      "x": 0,
+      "y": 100,
+      "z": 0
+    },
+    "npc": {
+      "gameMenuNPC": {
+        "location": {
+          "x": 0,
+          "y": 0,
+          "z": 0
         }
       }
     }

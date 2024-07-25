@@ -6,7 +6,6 @@ import com.samjakob.spigui.menu.SGMenu;
 import me.secretlovers.skywars.SkyWars;
 import me.secretlovers.skywars.game.Game;
 import me.secretlovers.skywars.game.GameManager;
-import me.secretlovers.skywars.game.team.Team;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -24,10 +23,13 @@ public class GamesGUI {
         for(Game game : gameManager.getGames().values()) {
 
             List<String> lore = new ArrayList<>();
-            lore.add("Players: " + game.getPlayers().size() + "/" + game.getTeams().size() * game.getTeams().get(0).getMaxPlayers());
+            lore.add("&fPlayers: " + game.getPlayers().size() + "/" + game.getTeams().size() * game.getTeams().get(0).getMaxPlayers());
+            for(Player p : game.getPlayers()) {
+                lore.add("&f" + p);
+            }
 
             SGButton button = new SGButton(new ItemBuilder(Material.GREEN_STAINED_GLASS_PANE)
-                    .name(game.getGameMap().getWorld().getName())
+                    .name("&a" + game.getMapName() + "-" + game.getId())
                     .lore(lore)
                     .build())
                     .withListener((InventoryClickEvent event) -> {

@@ -13,6 +13,7 @@ public class PlayerUtil {
         p.getActivePotionEffects().clear();
         p.setHealth(20);
         p.setFoodLevel(20);
+        p.getActivePotionEffects().clear();
         p.setGameMode(GameMode.SURVIVAL);
         p.getItemOnCursor().setType(Material.AIR);
     }

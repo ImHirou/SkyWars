@@ -1,21 +1,31 @@
 package me.secretlovers.skywars;
 
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.samjakob.spigui.SpiGUI;
+import io.vertx.core.Vertx;
 import lombok.Getter;
 import me.secretlovers.skywars.chests.ChestManager;
 import me.secretlovers.skywars.command.AdminCommand;
 import me.secretlovers.skywars.command.GameCommand;
+import me.secretlovers.skywars.command.LobbyCommand;
+import me.secretlovers.skywars.database.PlayerData;
+import me.secretlovers.skywars.database.PlayerManager;
 import me.secretlovers.skywars.game.Game;
 import me.secretlovers.skywars.game.GameManager;
-import me.secretlovers.skywars.game.team.Team;
+import me.secretlovers.skywars.game.kits.Kit;
+import me.secretlovers.skywars.listeners.EntityListeners;
 import me.secretlovers.skywars.listeners.PlayerListeners;
-import org.bukkit.craftbukkit.libs.org.apache.commons.io.FileUtils;
+import me.secretlovers.skywars.listeners.WorldCreationListener;
+import me.secretlovers.skywars.lobby.Lobby;
+import me.secretlovers.skywars.map.SWArena;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Map;
@@ -30,6 +40,9 @@ public final class SkyWars extends JavaPlugin {
     private JsonObject jsonConfig;
     private ChestManager chestManager;
     private GameManager gameManager;
+    private PlayerManager playerManager;
+    private ProtocolManager protocolManager;
+    private Lobby lobby;
 
     @Override
     public void onEnable() {
@@ -38,30 +51,25 @@ public final class SkyWars extends JavaPlugin {
         saveDefaultConfig();
 
         loadConfig();
-
-
-        JsonObject teamSection = SkyWars.getInstance().getJsonConfig().getAsJsonObject("maps").
-                getAsJsonObject("test").getAsJsonObject("teams");
-
-        System.out.println(teamSection);
-        for(Map.Entry<String, JsonElement> element : teamSection.entrySet()) {
-            System.out.println(element.getValue());
-        }
+        Kit.initKits();
 
         chestManager = new ChestManager();
         gameManager = new GameManager();
+        protocolManager = ProtocolLibrary.getProtocolManager();
+        lobby = new Lobby();
 
-        getCommand("game").setExecutor(new GameCommand());
-        getCommand("admin").setExecutor(new AdminCommand());
-        getServer().getPluginManager().registerEvents(chestManager, this);
-        getServer().getPluginManager().registerEvents(new PlayerListeners(), this);
+        playerManager = new PlayerManager(Vertx.vertx());
+        playerManager.loadPlayers();
+
+        registerCommands();
+        registerEvents();
 
     }
 
     @Override
     public void onDisable() {
         for(Game game : gameManager.getGames().values()) {
-            game.getGameMap().unload();
+            game.getArena().unload();
         }
     }
 
@@ -72,10 +80,27 @@ public final class SkyWars extends JavaPlugin {
             JsonParser parser = new JsonParser();
             jsonConfig = parser.parse(reader).getAsJsonObject();
 
-            System.out.println(jsonConfig);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void registerCommands() {
+        GameCommand game = new GameCommand();
+        getCommand("game").setExecutor(game);
+        getCommand("game").setTabCompleter(game);
+
+        getCommand("admin").setExecutor(new AdminCommand());
+
+        getCommand("lobby").setExecutor(new LobbyCommand());
+    }
+
+    private void registerEvents() {
+        getServer().getPluginManager().registerEvents(chestManager, this);
+        getServer().getPluginManager().registerEvents(new PlayerListeners(), this);
+        getServer().getPluginManager().registerEvents(new WorldCreationListener(), this);
+        getServer().getPluginManager().registerEvents(new EntityListeners(), this);
+        getServer().getPluginManager().registerEvents(lobby, this);
     }
 
 }

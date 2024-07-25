@@ -2,7 +2,9 @@ name: SkyWars
 version: '${version}'
 main: me.secretlovers.skywars.SkyWars
 api-version: '1.16'
+depend: [ ProtocolLib ]
 
 commands:
   game:
   admin:
+  lobby:

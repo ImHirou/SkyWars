@@ -2,6 +2,8 @@ package me.secretlovers.skywars;
 
 import lombok.Getter;
 import lombok.Setter;
+import me.secretlovers.skywars.game.kits.Kit;
+import org.bukkit.entity.Player;
 
 @Getter
 @Setter
@@ -11,21 +13,21 @@ public class PlayerStats {
     private int chestsOpened;
     private int blocksPlaced;
 
-    public PlayerStats() {
+    public PlayerStats(Player p) {
         kills = 0;
         chestsOpened = 0;
         blocksPlaced = 0;
     }
 
-    private void addKill() {
+    public void addKill() {
         kills++;
     }
 
-    private void addChestOpen() {
+    public void addChestOpen() {
         chestsOpened++;
     }
 
-    private void addBlockPlaced() {
+    public void addBlockPlaced() {
         blocksPlaced++;
     }
 
