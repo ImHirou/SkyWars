@@ -3,9 +3,11 @@ package me.secretlovers.skywars.command;
 import me.secretlovers.skywars.SkyWars;
 import me.secretlovers.skywars.game.GameManager;
 import me.secretlovers.skywars.game.GameState;
+import me.secretlovers.skywars.game.phases.Phase;
 import me.secretlovers.skywars.gui.GamesGUI;
 import me.secretlovers.skywars.gui.KitChoiceGUI;
 import me.secretlovers.skywars.gui.TeamChoiceGUI;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -40,13 +42,18 @@ public class GameCommand implements CommandExecutor, TabCompleter {
             if (args[1] == null) return true;
             int id = Integer.parseInt(args[1]);
             if(gameManager.getGames().containsKey(id))
-                gameManager.getGames().get(id).changeGameState(GameState.STARTING);
+                gameManager.getGames().get(id).nextPhase();
         }
         if (args[0].equals("leave")) {
             if (!gameManager.getPlayerToGame().containsKey(player)) return true;
-            GameState gameState = gameManager.getPlayerToGame().get(player).getGameState();
-            if (gameState != GameState.STARTING && gameState != GameState.PLAYING)
-                gameManager.getPlayerToGame().get(player).removePlayer(player);
+            gameManager.getPlayerToGame().get(player).removePlayer(player);
+        }
+        if(args[0].equals("send")) {
+            int id = Integer.parseInt(args[1]);
+            Player p = Bukkit.getPlayer(args[2]);
+            if(gameManager.getPlayerToGame().containsKey(p))
+                gameManager.getPlayerToGame().get(p).removePlayer(p);
+            gameManager.getGames().get(id).addPlayer(p);
         }
 
         if (args[0].equals("create")) {

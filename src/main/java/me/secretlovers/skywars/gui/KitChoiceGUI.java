@@ -13,7 +13,9 @@ import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class KitChoiceGUI {
 
@@ -22,7 +24,7 @@ public class KitChoiceGUI {
         SGMenu menu = SkyWars.getSpiGUI().create("&cKits", 6);
         PlayerData data = PlayerManager.data.get(player);
 
-        for(Kit kit : Kit.getKits().values()) {
+        for(Kit kit : Kit.getKits().values().stream().sorted(Comparator.comparing(Kit::getCost)).collect(Collectors.toList())) {
 
             if(kit.getCost() <= 0 && !data.getKits().contains(kit.getName()))
                 data.getKits().add(kit.getName());
@@ -55,7 +57,7 @@ public class KitChoiceGUI {
                             p.closeInventory();
                         } else {
                             data.setSelectedKit(kit.getName());
-                            p.closeInventory();
+                            open(p);
                             SkyWars.getInstance().getPlayerManager().savePlayer(data);
                         }
                     } else {

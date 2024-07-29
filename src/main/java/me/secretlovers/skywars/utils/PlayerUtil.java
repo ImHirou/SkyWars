@@ -4,6 +4,7 @@ import lombok.experimental.UtilityClass;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
 
 @UtilityClass
 public class PlayerUtil {
@@ -13,7 +14,7 @@ public class PlayerUtil {
         p.getActivePotionEffects().clear();
         p.setHealth(20);
         p.setFoodLevel(20);
-        p.getActivePotionEffects().clear();
+        for(PotionEffect effect : p.getActivePotionEffects()) p.removePotionEffect(effect.getType());
         p.setGameMode(GameMode.SURVIVAL);
         p.getItemOnCursor().setType(Material.AIR);
     }

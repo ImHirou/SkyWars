@@ -5,9 +5,11 @@ import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.mongo.MongoClient;
 import lombok.Getter;
+import me.secretlovers.skywars.SkyWars;
 import org.bson.types.ObjectId;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +26,20 @@ public class PlayerManager {
                 .put("db_name", "test");
 
         mongoClient = MongoClient.createShared(vertx, mongoConfig);
+
+        new BukkitRunnable() {
+
+            @Override
+            public void run() {
+                for(Player p : Bukkit.getOnlinePlayers()) {
+                    if(!data.containsKey(p)) {
+                        loadPlayer(p);
+                    }
+                }
+            }
+
+        }.runTaskTimer(SkyWars.getInstance(), 20, 20);
+
     }
 
     public void savePlayer(PlayerData playerData) {
@@ -76,21 +92,27 @@ public class PlayerManager {
     }
 
     public void loadPlayers() {
-        for(Player p : Bukkit.getOnlinePlayers()) {
-            this.loadPlayerByNickname(p.getDisplayName(), result -> {
-                if(result == null) {
-                    result = new PlayerData(p.getDisplayName());
-                    savePlayer(result);
-                }
-                PlayerManager.data.put(p, result);
-            });;
-        }
+        for(Player p : Bukkit.getOnlinePlayers())
+            loadPlayer(p);
     }
 
     public void savePlayers() {
         for(Player p : Bukkit.getOnlinePlayers())
-            if(data.containsKey(p))
-                savePlayer(PlayerManager.data.get(p));
+            savePlayer(p);
     }
 
+    public void loadPlayer(Player p) {
+        this.loadPlayerByNickname(p.getDisplayName(), result -> {
+            if(result == null) {
+                result = new PlayerData(p.getDisplayName());
+                savePlayer(result);
+            }
+            PlayerManager.data.put(p, result);
+        });;
+    }
+
+    public void savePlayer(Player p) {
+        if(data.containsKey(p))
+            savePlayer(PlayerManager.data.get(p));
+    }
 }

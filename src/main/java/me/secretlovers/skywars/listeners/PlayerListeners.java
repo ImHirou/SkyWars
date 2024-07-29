@@ -5,7 +5,10 @@ import me.secretlovers.skywars.database.PlayerData;
 import me.secretlovers.skywars.database.PlayerManager;
 import me.secretlovers.skywars.game.Game;
 import me.secretlovers.skywars.game.GameState;
+import me.secretlovers.skywars.game.phases.FinishPhase;
+import me.secretlovers.skywars.game.phases.WaitingPhase;
 import org.bukkit.*;
+import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -35,7 +38,7 @@ public class PlayerListeners implements Listener {
         Player p = (Player) event.getWhoClicked();
         if(!isInGame(p)) return;
         if(isSpectator(p)) event.setCancelled(true);
-        if(SkyWars.getInstance().getGameManager().getPlayerToGame().get(p).getGameState() != GameState.PLAYING) event.setCancelled(true);
+        if(SkyWars.getInstance().getGameManager().getPlayerToGame().get(p).getCurrentPhase().getClass() == WaitingPhase.class) event.setCancelled(true);
     }
 
     @EventHandler
@@ -44,11 +47,11 @@ public class PlayerListeners implements Listener {
         if (!isInGame(p)) return;
         if (isSpectator(p)) event.setCancelled(true);
         Game game = SkyWars.getInstance().getGameManager().getPlayerToGame().get(p);
-        if (game.getGameState() != GameState.PLAYING) event.setCancelled(true);
+        if(game.getCurrentPhase().getClass() == WaitingPhase.class) event.setCancelled(true);
         if (p.getItemInHand().getType() == Material.WHITE_WOOL &&
-                (game.getGameState() == GameState.UNKNOWN || game.getGameState() == GameState.WAITING) &&
+                (game.getCurrentPhase().getClass() == WaitingPhase.class &&
                 (event.getAction() == Action.RIGHT_CLICK_AIR ||
-                event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
+                event.getAction() == Action.RIGHT_CLICK_BLOCK))) {
             p.performCommand("game team");
         }
     }
@@ -64,7 +67,7 @@ public class PlayerListeners implements Listener {
         if (!isInGame(damager)) return;
         if (isSpectator(damager)) event.setCancelled(true);
         Game game = SkyWars.getInstance().getGameManager().getPlayerToGame().get(damager);
-        if (game.getGameState() != GameState.PLAYING) event.setCancelled(true);
+        if (game.getCurrentPhase().getClass() == WaitingPhase.class) event.setCancelled(true);
         if (game.getPlayerTeam().get(damager).getPlayers().contains(player)) event.setCancelled(true);
         System.out.println(game.getPlayerTeam().get(damager).getPlayers());
     }
@@ -75,7 +78,7 @@ public class PlayerListeners implements Listener {
         if (!isInGame(p)) return;
         Game game = SkyWars.getInstance().getGameManager().getPlayerToGame().get(p);
         if (isSpectator(p)) event.setCancelled(true);
-        else if (game.getGameState() != GameState.PLAYING) event.setCancelled(true);
+        else if (game.getCurrentPhase().getClass() == WaitingPhase.class) event.setCancelled(true);
         else if (event.getBlock().getLocation().getY() > 150) event.setCancelled(true);
         else if (event.getBlock().getType() == Material.CHEST || event.getBlock().getType() == Material.TRAPPED_CHEST) event.setCancelled(true);
         else game.getPlayerStats().get(p).addBlockPlaced();
@@ -86,12 +89,12 @@ public class PlayerListeners implements Listener {
         Player p = event.getPlayer();
         if (!isInGame(p)) return;
         if (isSpectator(p)) event.setCancelled(true);
-        if (SkyWars.getInstance().getGameManager().getPlayerToGame().get(p).getGameState() != GameState.PLAYING) event.setCancelled(true);
+        if (SkyWars.getInstance().getGameManager().getPlayerToGame().get(p).getCurrentPhase().getClass() == WaitingPhase.class) event.setCancelled(true);
         if (event.getBlock().getType() == Material.CHEST) {
-            Chest chest = (Chest) event.getBlock();
+            Chest chest = (Chest) event.getBlock().getState();
             if(!SkyWars.getInstance().getChestManager().isOpened(chest.getLocation())) SkyWars.getInstance().getChestManager().fill(chest.getInventory(), 1);
         } else if (event.getBlock().getType() == Material.TRAPPED_CHEST) {
-            Chest chest = (Chest) event.getBlock();
+            Chest chest = (Chest) event.getBlock().getState();
             if(!SkyWars.getInstance().getChestManager().isOpened(chest.getLocation())) SkyWars.getInstance().getChestManager().fill(chest.getInventory(), 2);
         }
 
@@ -154,7 +157,7 @@ public class PlayerListeners implements Listener {
         Player player = (Player) event.getEntity();
         if (!(isInGame(player))) return;
         if (isSpectator(player)) event.setCancelled(true);
-        if (SkyWars.getInstance().getGameManager().getPlayerToGame().get(player).getGameState() != GameState.PLAYING) event.setCancelled(true);
+        if (SkyWars.getInstance().getGameManager().getPlayerToGame().get(player).getCurrentPhase().getClass() == WaitingPhase.class) event.setCancelled(true);
     }
 
     @EventHandler
@@ -165,7 +168,8 @@ public class PlayerListeners implements Listener {
         if (p.getLocation().getY() < 0) {
             if(isSpectator(p)) p.teleport(game.getArena().getWorlds().get(game.getMapName()).getSpawnLocation());
             else {
-                if(game.getGameState() == GameState.PLAYING) p.setHealth(0);
+                if(!(game.getCurrentPhase().getClass() == WaitingPhase.class) &&
+                        !(game.getCurrentPhase().getClass() == FinishPhase.class)) p.setHealth(0);
                 else p.teleport(new Location(game.getArena().getWorlds().get(game.getMapName()), 0, game.getArena().getWorlds().get(game.getMapName()).getHighestBlockYAt(0, 0), 0));
 
             }

@@ -38,15 +38,15 @@ public class ChestManager implements Listener {
     private void onEvent(InventoryOpenEvent event) {
         InventoryHolder holder = event.getInventory().getHolder();
         Player player = (Player) event.getPlayer();
-        //if(!SkyWars.getInstance().getGameManager().getPlayerToGame().containsKey(player)) return;
-        //Game game = SkyWars.getInstance().getGameManager().getPlayerToGame().get(player);
+        if(!SkyWars.getInstance().getGameManager().getPlayerToGame().containsKey(player)) return;
+        Game game = SkyWars.getInstance().getGameManager().getPlayerToGame().get(player);
         if(holder instanceof Chest) {
             Chest chest = (Chest) holder;
             if(isOpened(chest.getLocation())) return;
             markAsOpen(chest.getLocation());
             if(chest.getBlock().getType() == Material.CHEST) fill(chest.getBlockInventory(), 1);
             else if(chest.getBlock().getType() == Material.TRAPPED_CHEST) fill(chest.getBlockInventory(), 2);
-            //game.getPlayerStats().get(player).addChestOpen();
+            game.getPlayerStats().get(player).addChestOpen();
         }
         if(holder instanceof DoubleChest) {
             DoubleChest chest = (DoubleChest) holder;
@@ -55,7 +55,7 @@ public class ChestManager implements Listener {
             markAsOpen(chest.getLocation());
             if(chest.getLocation().getBlock().getType() == Material.CHEST) fill(chest.getInventory(), 1);
             else if(chest.getLocation().getBlock().getType() == Material.TRAPPED_CHEST) fill(chest.getInventory(), 2);
-            //game.getPlayerStats().get(player).addChestOpen();
+            game.getPlayerStats().get(player).addChestOpen();
         }
     }
 
