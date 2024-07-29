@@ -12,6 +12,8 @@ import me.secretlovers.skywars.chests.ChestManager;
 import me.secretlovers.skywars.command.AdminCommand;
 import me.secretlovers.skywars.command.GameCommand;
 import me.secretlovers.skywars.command.LobbyCommand;
+import me.secretlovers.skywars.commands.MainCommand;
+import me.secretlovers.skywars.commands.SetupCommand;
 import me.secretlovers.skywars.database.PlayerData;
 import me.secretlovers.skywars.database.PlayerManager;
 import me.secretlovers.skywars.game.Game;
@@ -86,13 +88,10 @@ public final class SkyWars extends JavaPlugin {
     }
 
     private void registerCommands() {
-        GameCommand game = new GameCommand();
-        getCommand("game").setExecutor(game);
-        getCommand("game").setTabCompleter(game);
-
-        getCommand("admin").setExecutor(new AdminCommand());
-
-        getCommand("lobby").setExecutor(new LobbyCommand());
+        MainCommand main = new MainCommand();
+        SetupCommand setup = new SetupCommand();
+        main.latchOnto(getCommand("skywars"));
+        setup.latchOnto(getCommand("swsetup"));
     }
 
     private void registerEvents() {
